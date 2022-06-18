@@ -1,5 +1,8 @@
 let testString = "This is a test string.  We will begin by encrypting and decrypting it."
 
+const txtBox = document.getElementById('message')
+const sendBtn = document.getElementById('send')
+
 let checkIfDivisible = (num) => {
   const div = parseInt(num /3)
   return num === div * 3
@@ -22,7 +25,12 @@ return arr.toString().replace(/,/g,"");
 
 }
 
-let encryptedStr = encryptMsg(testString)
-console.log(encryptedStr)
-let decryptedStr = encryptMsg(encryptedStr)
-console.log(decryptedStr)
+sendBtn.addEventListener('click', (e) => {
+  e.preventDefault()
+  console.log(encryptMsg(txtBox.value))
+})
+
+// let encryptedStr = encryptMsg(testString)
+// console.log(encryptedStr)
+// let decryptedStr = encryptMsg(encryptedStr)
+// console.log(decryptedStr)
