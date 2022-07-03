@@ -1,3 +1,5 @@
+//const { post } = require("../routes/htmlRoutes")
+
 let testString = "This is a test string.  We will begin by encrypting and decrypting it."
 
 const txtBox = document.getElementById('message')
@@ -28,9 +30,14 @@ return arr.toString().replace(/,/g,"");
 sendBtn.addEventListener('click', (e) => {
   e.preventDefault()
   console.log(encryptMsg(txtBox.value))
+  sendMsg(encryptMsg(txtBox.value))
 })
 
-// let encryptedStr = encryptMsg(testString)
-// console.log(encryptedStr)
-// let decryptedStr = encryptMsg(encryptedStr)
-// console.log(decryptedStr)
+
+const sendMsg = (msg) => {
+  return $.ajax({
+    url: "/api/msg",
+    data: msg,
+    method: "POST",
+  });
+}
